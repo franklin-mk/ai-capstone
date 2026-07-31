@@ -1,3 +1,4 @@
+# ml_classifier.py
 # ============================================================
 # MODULE 4: ML Classifier — Supervised Diagnosis
 # Covers: Week 9 (Supervised Learning & Decision Trees)
@@ -5,6 +6,7 @@
 
 import numpy as np
 import pandas as pd
+from typing import Dict, List  # 🌟 FIX 1: Imported Dict and List for Type Hinting
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
@@ -107,7 +109,7 @@ class MLDiagnosticClassifier:
 
         if verbose:
             print("=" * 55)
-            print("  ML Diagnostic Classifier — Training")
+            print("   ML Diagnostic Classifier — Training")
             print("=" * 55)
 
         for name, model in self.models.items():
@@ -120,7 +122,7 @@ class MLDiagnosticClassifier:
                 'test_acc': test_acc
             }
             if verbose:
-                print(f"\n  🌲 {name}")
+                print(f"\n   🌲 {name}")
                 print(f"     CV Accuracy : {cv_scores.mean():.4f} "
                       f"± {cv_scores.std():.4f}")
                 print(f"     Test Accuracy: {test_acc:.4f}")
@@ -135,7 +137,7 @@ class MLDiagnosticClassifier:
         self._y_test = y_test
 
         if verbose:
-            print(f"\n  🏆 Best Model: {self.best_model_name} "
+            print(f"\n   🏆 Best Model: {self.best_model_name} "
                   f"({best_acc:.4f})")
         return results
 
@@ -143,9 +145,13 @@ class MLDiagnosticClassifier:
         """Predict disease from symptom list"""
         if not self.is_trained:
             self.train(verbose=False)
+        
+        # Normalize incoming symptoms to match lower_snake_case features
+        symptoms_clean = [s.lower().replace(' ', '_') for s in symptoms]
 
+        # 🌟 FIX 2: Check inside symptoms_clean instead of raw symptoms list
         features = np.array([
-            [1 if s in symptoms else 0
+            [1 if s in symptoms_clean else 0
              for s in self.SYMPTOM_FEATURES]
         ])
         pred_encoded = self.best_model.predict(features)[0]
@@ -158,10 +164,10 @@ class MLDiagnosticClassifier:
         top5     = sorted(prob_map.items(), key=lambda x: x[1], reverse=True)[:5]
 
         return {
-            'diagnosis':      disease,
-            'confidence':     round(float(pred_proba[pred_encoded]), 4),
-            'top5':           top5,
-            'model_used':     self.best_model_name,
+            'diagnosis':       disease,
+            'confidence':      round(float(pred_proba[pred_encoded]), 4),
+            'top5':            top5,
+            'model_used':      self.best_model_name,
             'symptom_vector': features[0].tolist()
         }
 
@@ -213,3 +219,7 @@ class MLDiagnosticClassifier:
         plt.savefig("ml_evaluation.png", dpi=150, bbox_inches='tight')
         plt.show()
         print("✅ Saved: ml_evaluation.png")
+
+
+
+###
