@@ -1,3 +1,4 @@
+# neural_network.py
 # ============================================================
 # MODULE 5: Deep Neural Network Diagnostic Model
 # Covers: Week 10 (Neural Networks)
@@ -7,6 +8,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras import layers, models, callbacks
 import matplotlib.pyplot as plt
+from typing import Dict, List  # 🌟 FIX: Imported type hints to prevent NameError
 
 class NeuralDiagnosticModel:
     """
@@ -70,7 +72,6 @@ class NeuralDiagnosticModel:
 
     def _generate_data(self, n: int = 3000):
         """Generate synthetic training data"""
-        from sklearn.preprocessing import LabelEncoder
         np.random.seed(42)
 
         profiles = {
@@ -202,5 +203,6 @@ class NeuralDiagnosticModel:
         plt.suptitle("Neural Network Training Curves",
                      fontsize=14, fontweight='bold')
         plt.tight_layout()
-        plt.savefig("nn_training.png", dpi=150)
+        plt.savefig("evaluation/nn_training.png", dpi=150) # 🌟 Saved to evaluation folder directly
         plt.show()
+        print("✅ Saved: evaluation/nn_training.png")

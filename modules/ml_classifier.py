@@ -3,7 +3,7 @@
 # MODULE 4: ML Classifier — Supervised Diagnosis
 # Covers: Week 9 (Supervised Learning & Decision Trees)
 # ============================================================
-
+import os
 import numpy as np
 import pandas as pd
 from typing import Dict, List  # 🌟 FIX 1: Imported Dict and List for Type Hinting
@@ -213,13 +213,25 @@ class MLDiagnosticClassifier:
                               fontweight='bold')
             axes[1].set_xlabel("Importance Score")
 
-        plt.suptitle(f"ML Diagnostic Model Evaluation — {self.best_model_name}",
-                     fontsize=14, fontweight='bold')
-        plt.tight_layout()
-        plt.savefig("ml_evaluation.png", dpi=150, bbox_inches='tight')
-        plt.show()
-        print("✅ Saved: ml_evaluation.png")
+        plt.suptitle(
+            f"ML Diagnostic Model Evaluation — {self.best_model_name}",
+            fontsize=14,
+            fontweight='bold'
+        )
 
+        plt.tight_layout()
+
+        # Create evaluation directory if it doesn't exist
+        output_dir = "evaluation"
+        os.makedirs(output_dir, exist_ok=True)
+
+        # Save plot inside evaluation folder
+        output_path = os.path.join(output_dir, "ml_evaluation.png")
+
+        plt.savefig(output_path, dpi=150, bbox_inches='tight')
+        plt.show()
+
+        print(f"✅ Saved evaluation plot to: {output_path}")
 
 
 ###

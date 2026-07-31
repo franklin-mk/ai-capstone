@@ -1,3 +1,4 @@
+# planner.py
 # ============================================================
 # MODULE 7: AI Planning — Treatment Plan Generator
 # Covers: Week 12 (AI Planning Techniques)
@@ -5,7 +6,7 @@
 
 from copy import deepcopy
 from collections import deque
-from typing import Dict, List, Set, Tuple, Optional
+from typing import Dict, List, Set, Tuple, Optional  # 🌟 Type hints imported cleanly
 
 class TreatmentPlanner:
     """
@@ -149,18 +150,13 @@ class TreatmentPlanner:
                               urgency: str) -> Dict:
         """Generate a treatment plan for a given diagnosis"""
 
-        # Map diagnosis to initial state predicates
         diagnosis_states = {
-            'flu':          {'VIRAL_INFECTION', 'DIAGNOSIS_NEEDED'},
-            'covid19':      {'COVID_SUSPECTED', 'CONTAGIOUS_DISEASE',
-                             'DIAGNOSIS_NEEDED'},
+            'flu':           {'VIRAL_INFECTION', 'DIAGNOSIS_NEEDED'},
+            'covid19':       {'COVID_SUSPECTED', 'CONTAGIOUS_DISEASE', 'DIAGNOSIS_NEEDED', 'VIRAL_INFECTION'},
             'cardiac_event':{'EMERGENCY_CASE',  'ICU_AVAILABLE'},
-            'dengue':       {'VIRAL_INFECTION',  'DIAGNOSIS_NEEDED',
-                             'DEHYDRATION_RISK'},
-            'meningitis':   {'EMERGENCY_CASE',  'BACTERIAL_INFECTION',
-                             'ICU_AVAILABLE'},
-            'tuberculosis': {'BACTERIAL_INFECTION', 'CONTAGIOUS_DISEASE',
-                             'DIAGNOSIS_NEEDED'},
+            'dengue':        {'VIRAL_INFECTION',  'DIAGNOSIS_NEEDED', 'DEHYDRATION_RISK'},
+            'meningitis':    {'EMERGENCY_CASE',  'BACTERIAL_INFECTION', 'ICU_AVAILABLE'},
+            'tuberculosis': {'BACTERIAL_INFECTION', 'CONTAGIOUS_DISEASE', 'DIAGNOSIS_NEEDED'},
             'diabetes':     {'DIAGNOSIS_NEEDED'},
             'common_cold':  {'VIRAL_INFECTION', 'DIAGNOSIS_NEEDED'},
         }
@@ -172,7 +168,6 @@ class TreatmentPlanner:
         )
         initial_state = base_state | dx_state
 
-        # Goal state: always end with treatment and monitoring
         goal_state = {'TREATMENT_STARTED', 'VITALS_MONITORED',
                       'FOLLOWUP_SCHEDULED'}
         if urgency == 'CRITICAL':
@@ -202,14 +197,22 @@ class TreatmentPlanner:
         }
 
     def _estimate_duration(self, plan: List[Dict]) -> str:
-        durations = [a['duration'] for a in plan]
         return f"{len(plan)} actions | see individual durations"
 
     def analyze(self, percept) -> Dict:
-        """Module interface — generates a sample plan"""
-        # This is called post-diagnosis; use KB result
-        result = self.create_treatment_plan('flu', 'MEDIUM')
-        result['summary']    = f"Plan: {result['steps']} steps generated"
-        result['diagnosis']  = 'flu'
-        result['confidence'] = 0.7
+        """Module interface — maps inputs based on clinical findings"""
+        dx = getattr(percept, 'diagnosis_guess', 'flu')
+        urg = getattr(percept, 'urgency_guess', 'MEDIUM')
+        
+        result = self.create_treatment_plan(dx, urg)
+        
+        # 🌟 SAFE GUARD FIX: Check for empty plan failure keys before formatting summary
+        if 'error' in result:
+            result['summary'] = f"Plan: Stalled | {result['error']}"
+            result['steps'] = 0
+        else:
+            result['summary'] = f"Plan: {result['steps']} steps generated"
+            
+        result['diagnosis']  = dx
+        result['confidence'] = 1.0
         return result

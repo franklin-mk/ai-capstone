@@ -1,9 +1,11 @@
+# fuzzy_controller.py
 # ============================================================
 # MODULE 6: Fuzzy Logic — Patient Severity Assessment
 # Covers: Week 12 (Fuzzy Logic)
 # ============================================================
 
 import numpy as np
+from typing import Dict, List  # 🌟 FIX: Imported type hints to prevent NameError
 
 class FuzzySeverityAssessor:
     """
