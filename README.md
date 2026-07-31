@@ -176,12 +176,6 @@ Run individual test modules from the project root.
 Example:
 
 ```bash
-python -m testing.test_agent
-```
-
-or
-
-```bash
 python test_kb.py
 ```
 
