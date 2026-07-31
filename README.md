@@ -26,10 +26,8 @@ The system combines **symbolic AI**, **probabilistic reasoning**, **machine lear
 
 > **Placeholder:** Insert a screenshot of the terminal after running `python app.py`
 
-
-```markdown
 ![Terminal Output](evaluation/terminal_output.png)
-```
+
 
 ---
 
@@ -37,9 +35,7 @@ The system combines **symbolic AI**, **probabilistic reasoning**, **machine lear
 
 > **Placeholder:** Gradient Boosting evaluation showing confusion matrix and feature importance.
 
-```markdown
 ![Machine Learning Evaluation](evaluation/ml_evaluation.png)
-```
 
 ---
 
@@ -47,9 +43,7 @@ The system combines **symbolic AI**, **probabilistic reasoning**, **machine lear
 
 > **Placeholder:** Accuracy and Loss curves generated during DNN training.
 
-```markdown
 ![Neural Network Training](evaluation/nn_training.png)
-```
 
 ---
 
@@ -57,9 +51,7 @@ The system combines **symbolic AI**, **probabilistic reasoning**, **machine lear
 
 > **Placeholder:** Comparison between Ensemble ML and Deep Neural Network.
 
-```markdown
 ![Model Comparison](evaluation/model_comparison.png)
-```
 
 ---
 
