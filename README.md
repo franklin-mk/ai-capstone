@@ -319,6 +319,15 @@ Running the application automatically generates the following deliverables.
 
 ---
 
+### Machine Learning Evaluation
+
+![ML Evaluation](evaluation/ml_evaluation.png)
+
+![Neural Network Training](evaluation/nn_training.png)
+
+![Model Comparison](evaluation/model_comparison.png)
+
+
 # 🧪 Running Individual Tests
 
 Each AI module can be tested independently.
