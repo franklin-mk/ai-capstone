@@ -24,7 +24,7 @@ The system combines **symbolic AI**, **probabilistic reasoning**, **machine lear
 
 ## End-to-End System Execution
 
-> **Placeholder:** Insert a screenshot of the terminal after running `python app.py`
+> **Placeholder:** Screenshot of the terminal after running `python app.py`
 
 ![Terminal Output](evaluation/terminal_output.png)
 
