@@ -171,12 +171,6 @@ ai-capstone-healthcare-v2/
 ├── reports/
 │   └── final_report.pdf
 │
-├── screenshots/
-│   ├── terminal_output.png
-│   ├── ml_evaluation.png
-│   ├── model_comparison.png
-│   └── nn_training.png
-│
 ├── test_agent.py
 ├── test_kb.py
 ├── test_bayesian.py
@@ -195,7 +189,7 @@ ai-capstone-healthcare-v2/
 ```bash
 git clone https://github.com/franklin-mk/ai-capstone.git
 
-cd ai-capstone-healthcare-v2
+cd ai-capstone
 ```
 
 ---
@@ -413,11 +407,11 @@ reports/final_report.pdf
 
 ---
 
-# 👨‍💻 Author
+# 👨‍💻 Project Manager
 
 **Franklin M.**
 
-CCS 3101 – Introduction to Artificial Intelligence
+CCS 3101 – Artificial Intelligence
 
 Dedan Kimathi University of Technology
 
@@ -431,7 +425,7 @@ This repository is intended for educational purposes as part of the **CCS 3101 A
 
 # ⭐ Acknowledgements
 
-Special thanks to the Department of Computer Science and the course instructors for providing the opportunity to develop an end-to-end Artificial Intelligence healthcare diagnostic system.
+Special thanks to the Department of Computer Science and the course instructor for providing the opportunity to develop an end-to-end Artificial Intelligence healthcare diagnostic system.
 
 ---
 
