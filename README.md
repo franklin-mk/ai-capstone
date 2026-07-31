@@ -13,18 +13,22 @@ The system combines **symbolic AI**, **probabilistic reasoning**, **machine lear
 ---
 
 # 📸 Project Demonstration
+<!-- ### Machine Learning Evaluation
+
+![ML Evaluation](evaluation/ml_evaluation.png)
+
+![Neural Network Training](evaluation/nn_training.png)
+
+![Model Comparison](evaluation/model_comparison.png)
+ -->
 
 ## End-to-End System Execution
 
 > **Placeholder:** Insert a screenshot of the terminal after running `python app.py`
 
-```text
-screenshots/
-└── terminal_output.png
-```
 
 ```markdown
-![Terminal Output](screenshots/terminal_output.png)
+![Terminal Output](evaluation/terminal_output.png)
 ```
 
 ---
@@ -34,7 +38,7 @@ screenshots/
 > **Placeholder:** Gradient Boosting evaluation showing confusion matrix and feature importance.
 
 ```markdown
-![Machine Learning Evaluation](screenshots/ml_evaluation.png)
+![Machine Learning Evaluation](evaluation/ml_evaluation.png)
 ```
 
 ---
@@ -44,7 +48,7 @@ screenshots/
 > **Placeholder:** Accuracy and Loss curves generated during DNN training.
 
 ```markdown
-![Neural Network Training](screenshots/nn_training.png)
+![Neural Network Training](evaluation/nn_training.png)
 ```
 
 ---
@@ -54,7 +58,7 @@ screenshots/
 > **Placeholder:** Comparison between Ensemble ML and Deep Neural Network.
 
 ```markdown
-![Model Comparison](screenshots/model_comparison.png)
+![Model Comparison](evaluation/model_comparison.png)
 ```
 
 ---
@@ -318,15 +322,6 @@ Running the application automatically generates the following deliverables.
 | evaluation/nn_training.png | Training accuracy & loss curves |
 
 ---
-
-### Machine Learning Evaluation
-
-![ML Evaluation](evaluation/ml_evaluation.png)
-
-![Neural Network Training](evaluation/nn_training.png)
-
-![Model Comparison](evaluation/model_comparison.png)
-
 
 # 🧪 Running Individual Tests
 
