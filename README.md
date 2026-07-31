@@ -100,7 +100,7 @@ ai-capstone/
 ├── data/
 ├── evaluation/
 ├── reports/
-└── testing/
+└── 
 ```
 
 ---
