@@ -1,0 +1,9 @@
+disease,type,urgency
+flu,viral,MEDIUM
+covid19,viral,HIGH
+dengue,viral,HIGH
+cardiac_event,cardiovascular,CRITICAL
+diabetes,metabolic,MEDIUM
+common_cold,viral,LOW
+tuberculosis,bacterial,HIGH
+meningitis,bacterial,CRITICAL

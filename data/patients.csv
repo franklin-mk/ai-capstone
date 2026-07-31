@@ -1,0 +1,6 @@
+patient_id,symptoms,temperature,heart_rate
+PT-01,"fever,cough,fatigue,loss_of_smell",39.1,105
+PT-02,"headache,stiff_neck,high_fever,light_sensitivity",40.2,118
+PT-03,"chest_pain,shortness_of_breath,sweating",37.2,125
+PT-04,"fever,rash,joint_pain,body_aches",38.9,98
+PT-05,"cough,weight_loss,night_sweats",37.8,88
