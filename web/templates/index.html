@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Healthcare Diagnostic Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="header-content">
+      <div class="brand">
+        <span class="brand-icon">🏥</span>
+        <div>
+          <h1>Healthcare AI Assistant</h1>
+          <span class="subtitle">CCS 3101 Capstone — Multi-Paradigm Diagnostic Engine</span>
+        </div>
+      </div>
+      
+      <div class="nav-controls">
+        <div class="agent-pill" id="agentPill">
+          <span class="dot"></span>
+          <span id="agentPillText">Agent idle</span>
+        </div>
+        
+        <nav class="tab-nav">
+          <button class="tab-btn active" data-tab="triage">Diagnostic Triage</button>
+          <button class="tab-btn" data-tab="architecture">System Architecture</button>
+          <button class="tab-btn" data-tab="evaluation">QA Metrics & Audit</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Container -->
+  <main class="app-container">
+
+    <!-- Tab 1: Diagnostic Triage -->
+    <section id="tab-triage" class="tab-panel active">
+      <div class="triage-layout">
+        
+        <!-- Left: Intake Form -->
+        <div class="form-column">
+          <div class="card">
+            <div class="card-title">Patient Intake & Symptom Presentation</div>
+            
+            <div class="demo-section">
+              <span class="hint">Quick-fill from validation sample dataset:</span>
+              <div class="chip-row" id="demoRow"></div>
+            </div>
+
+            <form id="patientForm">
+              <div class="form-grid">
+                <div class="field-group">
+                  <label for="fName">Patient Name</label>
+                  <input type="text" id="fName" placeholder="e.g. Jane Doe">
+                </div>
+                <div class="field-group">
+                  <label for="fGender">Gender</label>
+                  <select id="fGender">
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label for="fAge">Age</label>
+                  <input type="number" id="fAge" value="30" min="1" max="120" required>
+                </div>
+                <div class="field-group">
+                  <label for="fTemp">Temperature (°C)</label>
+                  <input type="number" id="fTemp" step="0.1" value="38.5" required>
+                </div>
+                <div class="field-group">
+                  <label for="fHr">Heart Rate (BPM)</label>
+                  <input type="number" id="fHr" value="95" required>
+                </div>
+                <div class="field-group">
+                  <label for="fBp">Blood Pressure</label>
+                  <input type="text" id="fBp" value="120/80">
+                </div>
+              </div>
+
+              <div class="field-group mt-12">
+                <label>Observed Symptoms (Select all that apply)</label>
+                <div class="symptom-grid" id="symptomGrid"></div>
+              </div>
+
+              <div class="field-group mt-12">
+                <label for="fExtra">Additional Unlisted Symptoms (Comma separated)</label>
+                <input type="text" id="fExtra" placeholder="e.g. dizziness, chills, ear pain">
+              </div>
+
+              <div id="formError" class="alert-error" style="display:none;"></div>
+
+              <button type="submit" class="submit-btn" id="submitBtn">
+                <span id="submitLabel">Run diagnostic agent</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right: Results Column -->
+        <div class="results-column" id="resultsColumn">
+          <div class="card empty-state">
+            <div class="empty-icon">🩺</div>
+            <h3>Ready for Clinical Intake</h3>
+            <p>Select a patient from the dataset chip bar or check off symptoms and click <strong>"Run diagnostic agent"</strong> to execute the full multi-module pipeline.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Tab 2: System Architecture -->
+    <section id="tab-architecture" class="tab-panel">
+      <div class="card mb-16">
+        <div class="card-title">PEAS Agent Framework Mapping</div>
+        <div class="peas-grid" id="peasGrid"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Multi-Paradigm Subsystem Architecture</div>
+        <div class="arch-grid" id="archGrid"></div>
+      </div>
+    </section>
+
+    <!-- Tab 3: Evaluation Metrics -->
+    <section id="tab-evaluation" class="tab-panel">
+      <div class="eval-header-card card mb-16">
+        <div>
+          <h2>System Performance & Quality Audit</h2>
+          <p class="hint" id="evalNote">Loading audit report...</p>
+        </div>
+        <button id="regenBtn" class="secondary-btn">Re-run QA Evaluation</button>
+      </div>
+
+      <div id="evalContent"></div>
+    </section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
