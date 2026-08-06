@@ -66,7 +66,8 @@ class FuzzySeverityAssessor:
         rules = {
             'critical': max(
                 min(temp_mf['critical'], hr_mf['high']),
-                min(temp_mf['critical'], symptom_mf['many'])
+                min(temp_mf['critical'], symptom_mf['many']),
+                temp_mf['critical']
             ),
             'high': max(
                 min(temp_mf['high'], hr_mf['elevated']),

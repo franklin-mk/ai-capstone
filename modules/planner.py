@@ -48,7 +48,7 @@ class TreatmentPlanner:
                 'name': 'ReceiveBloodResults',
                 'precond': {'BLOOD_RESULTS_PENDING'},
                 'delete':  {'BLOOD_RESULTS_PENDING'},
-                'add':     {'BLOOD_RESULTS_AVAILABLE', 'DIAGNOSIS_REFINED'},
+                'add':     {'BLOOD_RESULTS_AVAILABLE', 'DIAGNOSIS_REFINED', 'DIAGNOSIS_CONFIRMED'},  # 🌟 ADDED DIAGNOSIS_CONFIRMED
                 'cost': 0, 'duration': '2 hours'
             },
             {
@@ -153,9 +153,9 @@ class TreatmentPlanner:
         diagnosis_states = {
             'flu':           {'VIRAL_INFECTION', 'DIAGNOSIS_NEEDED'},
             'covid19':       {'COVID_SUSPECTED', 'CONTAGIOUS_DISEASE', 'DIAGNOSIS_NEEDED', 'VIRAL_INFECTION'},
-            'cardiac_event':{'EMERGENCY_CASE',  'ICU_AVAILABLE'},
+            'cardiac_event':{'EMERGENCY_CASE',  'ICU_AVAILABLE', 'DIAGNOSIS_NEEDED'},
             'dengue':        {'VIRAL_INFECTION',  'DIAGNOSIS_NEEDED', 'DEHYDRATION_RISK'},
-            'meningitis':    {'EMERGENCY_CASE',  'BACTERIAL_INFECTION', 'ICU_AVAILABLE'},
+            'meningitis':    {'EMERGENCY_CASE',  'BACTERIAL_INFECTION', 'ICU_AVAILABLE', 'DIAGNOSIS_NEEDED'},  # 🌟 ADDED DIAGNOSIS_NEEDED
             'tuberculosis': {'BACTERIAL_INFECTION', 'CONTAGIOUS_DISEASE', 'DIAGNOSIS_NEEDED'},
             'diabetes':     {'DIAGNOSIS_NEEDED'},
             'common_cold':  {'VIRAL_INFECTION', 'DIAGNOSIS_NEEDED'},
@@ -168,10 +168,12 @@ class TreatmentPlanner:
         )
         initial_state = base_state | dx_state
 
-        goal_state = {'TREATMENT_STARTED', 'VITALS_MONITORED',
-                      'FOLLOWUP_SCHEDULED'}
+        goal_state = {'TREATMENT_STARTED', 'VITALS_MONITORED', 'FOLLOWUP_SCHEDULED'}
+
         if urgency == 'CRITICAL':
             goal_state.add('PATIENT_IN_ICU')
+            initial_state.add('EMERGENCY_CASE')
+            initial_state.add('ICU_AVAILABLE')
 
         plan = self.generate_plan(initial_state, goal_state)
 
