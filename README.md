@@ -242,9 +242,16 @@ pip install -r requirements.txt
 
 ```bash
 python app.py
+
 ```
+## 🌐 Running the Applications
+
+### 1. Launch the Web Interface (Recommended)
+```bash
+python web/index.py
 
 ---
+Open your browser and navigate to http://localhost:5000 to access the interactive single-page dashboard!
 
 # ▶️ Sample Console Output
 
